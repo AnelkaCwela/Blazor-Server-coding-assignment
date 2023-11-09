@@ -1,0 +1,40 @@
+﻿@model Device
+@{
+    ViewData["Title"] = "Add Device";
+}
+<h4 class="text-center">Add Device</h4>
+<hr />
+<form asp-action="AddDevice" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Device Name</label>
+                <input asp-for="Name" placeholder="Enter Device Name" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+      </div>
+       <div class="col">
+   <div class="col">
+    <div class="form-outline">
+        <label class="form-label" for="form3Example2">Device Type name</label>
+        <select asp-for="deviceType" class="form-select" id="form3Example2" required>
+            <option value="">Select Device Type</option>
+            @foreach (var value in Enum.GetValues(typeof(DeviceType)))
+            {
+                <option value="@value">@value</option>
+            }
+        </select>
+        <span asp-validation-for="deviceType" class="text-danger"></span>
+    </div>
+</div>
+
+</div>
+
+    
+   
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>

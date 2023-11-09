@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Operation>
+@if(ViewBag.operationsList!=null){
+    <p>
+     
+ </p>
+    <div class="card-header">
+        List of pertaions
+    </div>
+    <table class="table table-hover table-responsive table-responsive-sm table-responsive-xl table-responsive-md table-striped ">
+
+        <thead>
+            <tr>
+
+                <th>
+                   Operation Name
+                </th>
+                <th>
+                  Image
+                </th>
+                <th>
+                   Device
+                </th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <img class="img-rounded img-responsive border-primary" role="img" src="data:image/jpg;base64,@System.Convert.ToBase64String(@item.ImageData)" width="100" height="100" asp-append-version="true" />
+                </td>               
+                <td>
+                   
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}else
+{
+     <p>
+     Nothing to display
+ </p>
+}

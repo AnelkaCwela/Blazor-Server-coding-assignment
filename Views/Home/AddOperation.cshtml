@@ -1,0 +1,40 @@
+﻿@model Operation
+@{
+    ViewData["Title"] = "Add Operation";
+}
+<h4 class="text-center">Create Operatioon</h4>
+<hr />
+<form asp-action="AddOperation" enctype="multipart/form-data" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form3Example1">Operation name</label>
+                <input asp-for="Name" placeholder="Enter Operation Name" required id="form3Example1" class="form-control" />
+
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+          </div>
+        <div class="form-group">
+                    <label asp-for="ImageData" class="control-label"></label>
+                    <div class="custom-file">
+
+                        <input type="file" multiple="multiple" asp-for="ImageData" class="form-control custom-file-input" />
+                        <label asp-for="ImageData" class="custom-file-label">Upload Image file</label>
+                        <span asp-validation-for="ImageData" class="text-danger">
+                            @ViewBag.file
+                        </span>
+        </div>
+      
+    </div>
+    
+    <div class="dropdown">
+        <label class="form-label" for="form3Example3">Order In Which To Perform</label>
+        <span> <select required asp-for="OrderInWhichToPerform" class="dropdown-item alert alert-primary small" asp-items="ViewBag.DeviceList"></select></span>
+        <span asp-validation-for="OrderInWhichToPerform" class="text-danger"></span>
+
+    </div>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+</form>
